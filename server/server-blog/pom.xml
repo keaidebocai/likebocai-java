@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.likebocai</groupId>
         <artifactId>server</artifactId>
-        <version>1.0</version>
+        <version>3.0</version>
     </parent>
 
     <artifactId>server-blog</artifactId>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.likebocai</groupId>
             <artifactId>model-blog</artifactId>
-            <version>1.0</version>
+            <version>3.0</version>
         </dependency>
     </dependencies>
 </project>
