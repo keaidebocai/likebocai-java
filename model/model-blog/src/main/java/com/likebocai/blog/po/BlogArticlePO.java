@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -15,111 +14,95 @@ import lombok.Data;
  */
 @TableName(value ="blog_article")
 @Data
-@Schema(name = "BlogArticle对象",description = "blog-文章表")
 public class BlogArticlePO implements Serializable {
     /**
      * 主键
      */
     @TableId(value = "id")
-    @Schema(description = "主键")
     private String id;
 
     /**
      * user表的id
      */
     @TableField(value = "user_id")
-    @Schema(description = "user表的id")
     private String userId;
 
     /**
      * 标题
      */
     @TableField(value = "title")
-    @Schema(description = "标题")
     private String title;
 
     /**
      * 美化地址栏所设置的url
      */
     @TableField(value = "url")
-    @Schema(description = "美化地址栏所设置的url")
     private String url;
 
     /**
      * 文章摘要
      */
     @TableField(value = "summary")
-    @Schema(description = "文章摘要")
     private String summary;
 
     /**
      * 文章内容
      */
     @TableField(value = "content")
-    @Schema(description = "文章内容")
     private String content;
 
     /**
      * blog_category分类表id
      */
     @TableField(value = "blog_category_id")
-    @Schema(description = "blog_category分类表id")
     private String blogCategoryId;
 
     /**
      * 缩略图
      */
     @TableField(value = "thumbnail")
-    @Schema(description = "缩略图")
     private String thumbnail;
 
     /**
      * 是否置顶(0:否,1:是)
      */
     @TableField(value = "is_top")
-    @Schema(description = "是否置顶(0:否,1:是)")
     private Integer isTop;
 
     /**
      * 浏览量
      */
     @TableField(value = "view_count")
-    @Schema(description = "浏览量")
     private Long viewCount;
 
     /**
      * 是否评论(0:否,1:是)
      */
     @TableField(value = "is_commont")
-    @Schema(description = "是否评论(0:否,1:是)")
     private String isCommont;
 
     /**
      * 是否发布(0:否,1:是)
      */
     @TableField(value = "status")
-    @Schema(description = "是否发布(0:否,1:是)")
     private String status;
 
     /**
      * 逻辑删除
      */
     @TableField(value = "is_deleted")
-    @Schema(description = "逻辑删除")
     private Integer isDeleted;
 
     /**
      * 创建时间
      */
     @TableField(value = "create_time")
-    @Schema(description = "创建时间")
     private LocalDateTime createTime;
 
     /**
      * 修改时间
      */
     @TableField(value = "update_time")
-    @Schema(description = "修改时间")
     private LocalDateTime updateTime;
 
     @TableField(exist = false)
