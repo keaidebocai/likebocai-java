@@ -1,6 +1,5 @@
 package com.likebocai.user.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -17,7 +16,7 @@ import lombok.Data;
 @TableName(value ="user")
 @Data
 @Schema(name = "User对象",description = "user-用户表")
-public class User implements Serializable {
+public class UserPO implements Serializable {
     /**
      * 主键
      */
@@ -137,7 +136,7 @@ public class User implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        User other = (User) that;
+        UserPO other = (UserPO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
             && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))

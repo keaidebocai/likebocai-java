@@ -1,4 +1,4 @@
-package com.likebocai.email.entity;
+package com.likebocai.email.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -16,7 +16,7 @@ import lombok.Data;
 @TableName(value ="email_content")
 @Data
 @Schema(name = "EmailContent对象",description = "email-邮件内容表")
-public class EmailContent implements Serializable {
+public class EmailContentPO implements Serializable {
     /**
      * 16位字符串的主键
      */
@@ -108,7 +108,7 @@ public class EmailContent implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        EmailContent other = (EmailContent) that;
+        EmailContentPO other = (EmailContentPO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
             && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))

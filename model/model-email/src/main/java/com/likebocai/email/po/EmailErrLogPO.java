@@ -1,4 +1,4 @@
-package com.likebocai.email.entity;
+package com.likebocai.email.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -15,7 +15,7 @@ import lombok.Data;
 @TableName(value ="email_err_log")
 @Data
 @Schema(name = "EmailErrLog对象",description = "email-错误日志表")
-public class EmailErrLog implements Serializable {
+public class EmailErrLogPO implements Serializable {
     /**
      * 主键
      */
@@ -58,7 +58,7 @@ public class EmailErrLog implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        EmailErrLog other = (EmailErrLog) that;
+        EmailErrLogPO other = (EmailErrLogPO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getEmailId() == null ? other.getEmailId() == null : this.getEmailId().equals(other.getEmailId()))
             && (this.getErrReason() == null ? other.getErrReason() == null : this.getErrReason().equals(other.getErrReason()))

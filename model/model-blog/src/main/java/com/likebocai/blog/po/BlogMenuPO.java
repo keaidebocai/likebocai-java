@@ -1,6 +1,5 @@
-package com.likebocai.blog.entity;
+package com.likebocai.blog.po;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -16,7 +15,7 @@ import lombok.Data;
 @TableName(value ="blog_menu")
 @Data
 @Schema(name = "BlogMenu对象",description = "blog-菜单表")
-public class BlogMenu implements Serializable {
+public class BlogMenuPO implements Serializable {
     /**
      * id
      */
@@ -59,7 +58,7 @@ public class BlogMenu implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        BlogMenu other = (BlogMenu) that;
+        BlogMenuPO other = (BlogMenuPO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getMenuName() == null ? other.getMenuName() == null : this.getMenuName().equals(other.getMenuName()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))

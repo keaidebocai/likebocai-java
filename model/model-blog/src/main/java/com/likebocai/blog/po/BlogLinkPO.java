@@ -1,6 +1,5 @@
-package com.likebocai.blog.entity;
+package com.likebocai.blog.po;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -12,12 +11,12 @@ import lombok.Data;
 
 /**
  * 
- * @TableName blog_category
+ * @TableName blog_link
  */
-@TableName(value ="blog_category")
+@TableName(value ="blog_link")
 @Data
-@Schema(name = "BlogCategory对象",description = "blog-文章分类表")
-public class BlogCategory implements Serializable {
+@Schema(name = "BlogLink对象",description = "blog-友情链接表")
+public class BlogLinkPO implements Serializable {
     /**
      * 主键
      */
@@ -26,25 +25,18 @@ public class BlogCategory implements Serializable {
     private String id;
 
     /**
-     * 分类名
+     * 友链名称
      */
-    @TableField(value = "category_name")
-    @Schema(description = "分类名")
-    private String categoryName;
+    @TableField(value = "link_name")
+    @Schema(description = "友链名称")
+    private String linkName;
 
     /**
-     * 分类url
+     * logo链接
      */
-    @TableField(value = "category_url")
-    @Schema(description = "分类url")
-    private String categoryUrl;
-
-    /**
-     * 
-     */
-    @TableField(value = "category_icon_url")
-    @Schema(description = "categoryIconUrl")
-    private String categoryIconUrl;
+    @TableField(value = "logo")
+    @Schema(description = "logo链接")
+    private String logo;
 
     /**
      * 描述
@@ -52,6 +44,20 @@ public class BlogCategory implements Serializable {
     @TableField(value = "description")
     @Schema(description = "描述")
     private String description;
+
+    /**
+     * 网络地址
+     */
+    @TableField(value = "address")
+    @Schema(description = "网络地址")
+    private String address;
+
+    /**
+     * 审核状态(0:不通过,1:通过)
+     */
+    @TableField(value = "status")
+    @Schema(description = "审核状态(0:不通过,1:通过)")
+    private String status;
 
     /**
      * 逻辑删除
@@ -88,12 +94,13 @@ public class BlogCategory implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        BlogCategory other = (BlogCategory) that;
+        BlogLinkPO other = (BlogLinkPO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getCategoryName() == null ? other.getCategoryName() == null : this.getCategoryName().equals(other.getCategoryName()))
-            && (this.getCategoryUrl() == null ? other.getCategoryUrl() == null : this.getCategoryUrl().equals(other.getCategoryUrl()))
-            && (this.getCategoryIconUrl() == null ? other.getCategoryIconUrl() == null : this.getCategoryIconUrl().equals(other.getCategoryIconUrl()))
+            && (this.getLinkName() == null ? other.getLinkName() == null : this.getLinkName().equals(other.getLinkName()))
+            && (this.getLogo() == null ? other.getLogo() == null : this.getLogo().equals(other.getLogo()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
+            && (this.getAddress() == null ? other.getAddress() == null : this.getAddress().equals(other.getAddress()))
+            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
@@ -104,10 +111,11 @@ public class BlogCategory implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getCategoryName() == null) ? 0 : getCategoryName().hashCode());
-        result = prime * result + ((getCategoryUrl() == null) ? 0 : getCategoryUrl().hashCode());
-        result = prime * result + ((getCategoryIconUrl() == null) ? 0 : getCategoryIconUrl().hashCode());
+        result = prime * result + ((getLinkName() == null) ? 0 : getLinkName().hashCode());
+        result = prime * result + ((getLogo() == null) ? 0 : getLogo().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
+        result = prime * result + ((getAddress() == null) ? 0 : getAddress().hashCode());
+        result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
@@ -121,10 +129,11 @@ public class BlogCategory implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", categoryName=").append(categoryName);
-        sb.append(", categoryUrl=").append(categoryUrl);
-        sb.append(", categoryIconUrl=").append(categoryIconUrl);
+        sb.append(", linkName=").append(linkName);
+        sb.append(", logo=").append(logo);
         sb.append(", description=").append(description);
+        sb.append(", address=").append(address);
+        sb.append(", status=").append(status);
         sb.append(", isDeleted=").append(isDeleted);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);

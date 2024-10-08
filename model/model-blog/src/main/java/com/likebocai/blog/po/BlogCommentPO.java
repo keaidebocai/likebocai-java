@@ -1,6 +1,5 @@
-package com.likebocai.blog.entity;
+package com.likebocai.blog.po;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -17,7 +16,7 @@ import lombok.Data;
 @TableName(value ="blog_comment")
 @Data
 @Schema(name = "BlogComment对象",description = "blog-评论类表")
-public class BlogComment implements Serializable {
+public class BlogCommentPO implements Serializable {
     /**
      * 主键
      */
@@ -116,7 +115,7 @@ public class BlogComment implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        BlogComment other = (BlogComment) that;
+        BlogCommentPO other = (BlogCommentPO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
             && (this.getBlogArticleId() == null ? other.getBlogArticleId() == null : this.getBlogArticleId().equals(other.getBlogArticleId()))

@@ -1,6 +1,5 @@
-package com.likebocai.blog.entity;
+package com.likebocai.blog.po;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -12,12 +11,12 @@ import lombok.Data;
 
 /**
  * 
- * @TableName blog_tag
+ * @TableName blog_category
  */
-@TableName(value ="blog_tag")
+@TableName(value ="blog_category")
 @Data
-@Schema(name = "BlogTag对象",description = "blog-标签表")
-public class BlogTag implements Serializable {
+@Schema(name = "BlogCategory对象",description = "blog-文章分类表")
+public class BlogCategoryPO implements Serializable {
     /**
      * 主键
      */
@@ -26,32 +25,32 @@ public class BlogTag implements Serializable {
     private String id;
 
     /**
-     * 标签名
+     * 分类名
      */
-    @TableField(value = "tag_name")
-    @Schema(description = "标签名")
-    private String tagName;
+    @TableField(value = "category_name")
+    @Schema(description = "分类名")
+    private String categoryName;
 
     /**
-     * tag的url
+     * 分类url
      */
-    @TableField(value = "tag_url")
-    @Schema(description = "tag的url")
-    private String tagUrl;
+    @TableField(value = "category_url")
+    @Schema(description = "分类url")
+    private String categoryUrl;
 
     /**
-     * 备注
+     * 
      */
-    @TableField(value = "remark")
-    @Schema(description = "备注")
-    private String remark;
+    @TableField(value = "category_icon_url")
+    @Schema(description = "categoryIconUrl")
+    private String categoryIconUrl;
 
     /**
-     * 标签颜色 #000000
+     * 描述
      */
-    @TableField(value = "color")
-    @Schema(description = "标签颜色 #000000")
-    private String color;
+    @TableField(value = "description")
+    @Schema(description = "描述")
+    private String description;
 
     /**
      * 逻辑删除
@@ -88,12 +87,12 @@ public class BlogTag implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        BlogTag other = (BlogTag) that;
+        BlogCategoryPO other = (BlogCategoryPO) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getTagName() == null ? other.getTagName() == null : this.getTagName().equals(other.getTagName()))
-            && (this.getTagUrl() == null ? other.getTagUrl() == null : this.getTagUrl().equals(other.getTagUrl()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getColor() == null ? other.getColor() == null : this.getColor().equals(other.getColor()))
+            && (this.getCategoryName() == null ? other.getCategoryName() == null : this.getCategoryName().equals(other.getCategoryName()))
+            && (this.getCategoryUrl() == null ? other.getCategoryUrl() == null : this.getCategoryUrl().equals(other.getCategoryUrl()))
+            && (this.getCategoryIconUrl() == null ? other.getCategoryIconUrl() == null : this.getCategoryIconUrl().equals(other.getCategoryIconUrl()))
+            && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
             && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
@@ -104,10 +103,10 @@ public class BlogTag implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getTagName() == null) ? 0 : getTagName().hashCode());
-        result = prime * result + ((getTagUrl() == null) ? 0 : getTagUrl().hashCode());
-        result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
-        result = prime * result + ((getColor() == null) ? 0 : getColor().hashCode());
+        result = prime * result + ((getCategoryName() == null) ? 0 : getCategoryName().hashCode());
+        result = prime * result + ((getCategoryUrl() == null) ? 0 : getCategoryUrl().hashCode());
+        result = prime * result + ((getCategoryIconUrl() == null) ? 0 : getCategoryIconUrl().hashCode());
+        result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
         result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
@@ -121,10 +120,10 @@ public class BlogTag implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", tagName=").append(tagName);
-        sb.append(", tagUrl=").append(tagUrl);
-        sb.append(", remark=").append(remark);
-        sb.append(", color=").append(color);
+        sb.append(", categoryName=").append(categoryName);
+        sb.append(", categoryUrl=").append(categoryUrl);
+        sb.append(", categoryIconUrl=").append(categoryIconUrl);
+        sb.append(", description=").append(description);
         sb.append(", isDeleted=").append(isDeleted);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
