@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.likebocai</groupId>
-        <artifactId>server</artifactId>
-        <version>3.0</version>
+        <artifactId>model</artifactId>
+        <version>3.0.0</version>
     </parent>
 
-    <artifactId>server-blog</artifactId>
+    <artifactId>model-share</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -17,11 +17,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.likebocai</groupId>
-            <artifactId>model-blog</artifactId>
-            <version>3.0</version>
-        </dependency>
-    </dependencies>
 </project>

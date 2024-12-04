@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: likebocai-share
+  profiles:
+#    active-group: DEFAULT_GROUP
+    active-group: DEV
+  cloud:
+    nacos:
+#      username: nacos
+#      password: Fyk@20010628
+      config:
+        server-addr: 192.168.31.9:8848
+        prefix: ${spring.application.name}
+        file-extension: yaml
+        group: ${spring.profiles.active-group}
+        extension-configs:
+          - data-id: common-account.yaml
+            group: ${spring.profiles.active-group}
+            refresh: true
+        namespace: 6300372c-d4d9-45e4-9269-97c7897b4ea6
+      discovery:
+        server-addr: ${spring.cloud.nacos.config.server-addr}
+        namespace: 6300372c-d4d9-45e4-9269-97c7897b4ea6

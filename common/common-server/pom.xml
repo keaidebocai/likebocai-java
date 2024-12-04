@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.likebocai</groupId>
         <artifactId>common</artifactId>
-        <version>3.0</version>
+        <version>3.0.0</version>
     </parent>
 
     <artifactId>common-server</artifactId>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.likebocai</groupId>
             <artifactId>common-util</artifactId>
-            <version>3.0</version>
+            <version>3.0.0</version>
         </dependency>
         <!-- SPRINGBOOT JDBC -->
         <dependency>
@@ -30,8 +30,8 @@
         </dependency>
         <!-- Mysql驱动包 -->
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <!-- 数据库连接池 -->
         <dependency>

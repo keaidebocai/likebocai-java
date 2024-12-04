@@ -1,4 +1,4 @@
-package com.likebocai.blog.config;
+package com.likebocai.share.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -9,14 +9,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Knife4jConfig {
-
     /**
      * mall-product 产品api分组
     **/
     @Bean
     public GroupedOpenApi blogTestApi() {
         return GroupedOpenApi.builder()
-                .group("博客-测试模块")
+                .group("share-测试模块")
                 .pathsToMatch("/**")
                 .build();
     }
@@ -28,9 +27,9 @@ public class Knife4jConfig {
 
         return new OpenAPI()
                 .info(new Info()
-                        .title("菠菜博客接口文档")
-                        .version("1.0")
-                        .description("菠菜博客接口文档")
+                        .title("菠菜的小窝-share-接口文档")
+                        .version("3.0.0")
+                        .description("菠菜的小窝-share-接口文档")
                         .contact(new Contact().name("likebocai"))
                         .termsOfService("https://www.likebocai.com")
                         .contact(
@@ -41,6 +40,4 @@ public class Knife4jConfig {
                         )
                 );
     }
-
-
 }

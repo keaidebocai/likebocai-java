@@ -66,6 +66,20 @@ CREATE TABLE `oauth_role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='角色表';
 
+/*Table structure for table `oauth_role_permission` */
+
+DROP TABLE IF EXISTS `oauth_role_permission`;
+
+CREATE TABLE `oauth_role_permission` (
+  `id` bigint unsigned NOT NULL COMMENT '角色权限关联表',
+  `role_id` bigint unsigned NOT NULL COMMENT '角色id',
+  `permission_id` bigint unsigned NOT NULL COMMENT '权限id',
+  `is_deleted` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '逻辑删除(1: 删除,0:未删除)',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`,`role_id`,`permission_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='角色权限关联表';
+
 /*Table structure for table `oauth_user` */
 
 DROP TABLE IF EXISTS `oauth_user`;
@@ -83,20 +97,6 @@ CREATE TABLE `oauth_user` (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户基本的信息表';
-
-/*Table structure for table `role_permission` */
-
-DROP TABLE IF EXISTS `role_permission`;
-
-CREATE TABLE `role_permission` (
-  `id` bigint unsigned NOT NULL COMMENT '角色权限关联表',
-  `role_id` bigint unsigned NOT NULL COMMENT '角色id',
-  `permission_id` bigint unsigned NOT NULL COMMENT '权限id',
-  `is_deleted` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '逻辑删除(1: 删除,0:未删除)',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`,`role_id`,`permission_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='角色权限关联表';
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

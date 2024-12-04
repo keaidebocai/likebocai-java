@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.likebocai</groupId>
         <artifactId>common</artifactId>
-        <version>3.0</version>
+        <version>3.0.0</version>
     </parent>
 
     <artifactId>common-config</artifactId>
@@ -22,10 +22,10 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
         </dependency>
-        <!-- mybatis-plus -->
+        <!-- mybatis -->
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
         <!-- redis -->
         <dependency>

@@ -6,13 +6,13 @@
     <parent>
         <groupId>com.likebocai</groupId>
         <artifactId>likebocai-java</artifactId>
-        <version>3.0</version>
+        <version>3.0.0</version>
     </parent>
 
     <artifactId>server</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>server-blog</module>
+        <module>server-share</module>
     </modules>
 
     <properties>
@@ -25,17 +25,17 @@
         <dependency>
             <groupId>com.likebocai</groupId>
             <artifactId>common-base</artifactId>
-            <version>3.0</version>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.likebocai</groupId>
             <artifactId>common-util</artifactId>
-            <version>3.0</version>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.likebocai</groupId>
             <artifactId>common-config</artifactId>
-            <version>3.0</version>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 

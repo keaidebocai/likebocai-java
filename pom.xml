@@ -13,7 +13,7 @@
 
     <groupId>com.likebocai</groupId>
     <artifactId>likebocai-java</artifactId>
-    <version>3.0</version>
+    <version>3.0.0</version>
     <packaging>pom</packaging>
     <modules>
         <module>common</module>
@@ -25,6 +25,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- spring boob、spring cloud、spring cloud alibaba 版本对照 -->
+        <!-- https://sca.aliyun.com/docs/2023/overview/version-explain -->
         <!-- cloud -->
         <cloud.version>2023.0.1</cloud.version>
         <!-- alibaba version -->
@@ -34,9 +36,9 @@
         <!-- druid -->
         <druid.version>1.2.22</druid.version>
         <!-- mysql -->
-        <mysql.version>8.0.33</mysql.version>
-        <!-- mybatis-plus -->
-        <mybatis.plus.version>3.5.7</mybatis.plus.version>
+        <mysql.version>8.0.26</mysql.version>
+        <!-- mybatis -->
+        <mybatis.version>3.0.3</mybatis.version>
         <!-- knife4j -->
         <knife4j.version>4.4.0</knife4j.version>
     </properties>
@@ -70,15 +72,15 @@
             </dependency>
             <!-- Mysql驱动包 -->
             <dependency>
-                <groupId>com.mysql</groupId>
-                <artifactId>mysql-connector-j</artifactId>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-            <!-- mybatis-plus -->
+            <!-- mybatis -->
             <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
-                <version>${mybatis.plus.version}</version>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
