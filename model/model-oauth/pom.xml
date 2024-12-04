@@ -9,7 +9,7 @@
         <version>3.0.0</version>
     </parent>
 
-    <artifactId>model-user</artifactId>
+    <artifactId>model-oauth</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

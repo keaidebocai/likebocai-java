@@ -13,8 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>model-email</module>
-        <module>model-user</module>
         <module>model-share</module>
+        <module>model-oauth</module>
     </modules>
 
     <properties>
