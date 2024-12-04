@@ -1,10 +1,16 @@
 package com.likebocai.oauth.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
 * 用户行为记录日志表
@@ -54,7 +60,15 @@ public class OauthActionLogPO implements Serializable {
     /**
     * 创建时间
     */
-    private Date createTime;
+    //此注解用来接收字符串类型的参数封装成LocalDateTime类型
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //此注解将date类型数据转成字符串响应出去
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8", shape = JsonFormat.Shape.STRING)
+    // 反序列化
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    // 序列化
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime createTime;
     /**
     * 用户的IP地址，适配IPv4和IPv6
     */

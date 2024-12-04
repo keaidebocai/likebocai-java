@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
 * 角色权限关联表
@@ -35,9 +35,9 @@ public class OauthRolePermission implements Serializable {
     /**
     * 创建时间
     */
-    private Date createTime;
+    private LocalDateTime createTime;
     /**
     * 更新时间
     */
-    private Date updateTime;
+    private LocalDateTime updateTime;
 }

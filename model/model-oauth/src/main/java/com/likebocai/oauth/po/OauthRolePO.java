@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
 * 角色表
@@ -35,11 +35,11 @@ public class OauthRolePO implements Serializable {
     /**
     * 创建时间
     */
-    private Date createTime;
+    private LocalDateTime createTime;
     /**
     * 更新时间
     */
-    private Date updateTime;
+    private LocalDateTime updateTime;
     /**
     * 逻辑删除(1: 删除,0:未删除)
     */
