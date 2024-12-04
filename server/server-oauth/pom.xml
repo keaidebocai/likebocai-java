@@ -5,16 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.likebocai</groupId>
-        <artifactId>likebocai-java</artifactId>
+        <artifactId>server</artifactId>
         <version>3.0.0</version>
     </parent>
 
-    <artifactId>server</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>server-share</module>
-        <module>server-oauth</module>
-    </modules>
+    <artifactId>server-oauth</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -23,19 +18,10 @@
     </properties>
 
     <dependencies>
+        <!-- oauth实体类 -->
         <dependency>
             <groupId>com.likebocai</groupId>
-            <artifactId>common-base</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.likebocai</groupId>
-            <artifactId>common-util</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.likebocai</groupId>
-            <artifactId>common-config</artifactId>
+            <artifactId>model-oauth</artifactId>
             <version>3.0.0</version>
         </dependency>
     </dependencies>
