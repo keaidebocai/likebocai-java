@@ -1,5 +1,9 @@
 package com.likebocai.oauth.po;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,6 +11,9 @@ import java.util.Date;
 * 角色权限关联表
 * @TableName oauth_role_permission
 */
+@Getter
+@Setter
+@ToString
 public class OauthRolePermission implements Serializable {
 
     /**
