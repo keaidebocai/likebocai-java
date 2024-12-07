@@ -29,6 +29,10 @@ public class OauthUserPO implements Serializable {
     */
     private String password;
     /**
+     * 用户昵称，用于显示
+     */
+    private String nickName;
+    /**
     * 用户的邮箱
     */
     private String userEmail;

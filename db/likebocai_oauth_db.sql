@@ -88,6 +88,7 @@ CREATE TABLE `oauth_user` (
   `id` bigint unsigned NOT NULL COMMENT '主键，雪花算法',
   `user_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户名,用于登录',
   `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '加密后的密码(Argon2复合加密，设置为128位)',
+  `nick_name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户昵称，用于显示',
   `user_email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户的邮箱',
   `user_sex` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '性别(0: 未知,1: 男,2: 女, 3: 阿帕奇武装直升机)',
   `role_id` bigint unsigned NOT NULL COMMENT '用户的角色信息',
