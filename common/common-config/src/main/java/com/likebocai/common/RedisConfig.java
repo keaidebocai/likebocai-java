@@ -1,9 +1,5 @@
-package com.likebocai.share.config;
+package com.likebocai.common;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.Resource;
-import org.redisson.client.RedisClient;
-import org.redisson.config.Config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

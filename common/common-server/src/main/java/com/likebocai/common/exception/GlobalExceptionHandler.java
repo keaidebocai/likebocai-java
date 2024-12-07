@@ -8,7 +8,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -30,8 +33,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({MethodArgumentNotValidException.class, BindException.class})
     public Result<?> handleValidException(BindException e) {
         List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
-        String message = fieldErrors.stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining(";"));
-        return Result.build(null,400,message);
+        Map<String,StringBuilder> messageMap = new HashMap<>();
+        for (FieldError fieldError : fieldErrors) {
+            String field = fieldError.getField();
+            String message = fieldError.getDefaultMessage();
+            messageMap.putIfAbsent(field, new StringBuilder());
+            messageMap.computeIfPresent(field,(k,v) -> v.append(message).append(";"));
+        }
+        return Result.build(messageMap,400,"请校验参数");
     }
 
 }
