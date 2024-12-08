@@ -16,9 +16,6 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl implements LoginService {
     @Override
     public Result<UserLoginVO> login(UserLoginDTO userLoginDTO) {
-        System.out.println(userLoginDTO.getUserName());
-        System.out.println(userLoginDTO.getPassword());
-        System.out.println(userLoginDTO.getTimeStamp());
         UserLoginVO userLoginVO = new UserLoginVO();
         userLoginVO.setAccessToken("123");
         userLoginVO.setRefreshToken("456");
