@@ -2,6 +2,7 @@ package com.likebocai.common;
 
 import com.likebocai.common.converter.ValidationHttpMessageConverter;
 import com.likebocai.common.interceptor.ValidationInterceptor;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -13,9 +14,9 @@ import java.util.List;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Autowired
+    @Resource
     private ValidationHttpMessageConverter validationHttpMessageConverter;
-    @Autowired
+    @Resource
     private ValidationInterceptor validationInterceptor;
 
     @Override
