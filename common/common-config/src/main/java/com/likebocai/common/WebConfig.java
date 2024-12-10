@@ -20,7 +20,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(validationInterceptor).addPathPatterns("/**");
+        // TODO: 这里建议后面好好规划一下url路径，缩小该拦截器的范围
+        registry.addInterceptor(validationInterceptor).addPathPatterns("/api/**");
     }
 
     @Override

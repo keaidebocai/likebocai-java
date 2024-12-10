@@ -24,14 +24,14 @@ public class ValidationInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
         log.debug("RequestBodyInterceptor -> postHandle -> clear");
         // 请求处理完后清理 ThreadLocal
         ValidationContext.clear();
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         log.debug("RequestBodyInterceptor -> afterCompletion -> clear");
         // 请求完成后清理 ThreadLocal
         ValidationContext.clear();
