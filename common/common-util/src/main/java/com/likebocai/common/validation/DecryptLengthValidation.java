@@ -2,6 +2,7 @@ package com.likebocai.common.validation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.likebocai.common.context.ValidationContext;
+import com.likebocai.common.utils.AESUtils;
 import com.likebocai.common.validation.constraints.DecryptRuleByLength;
 import jakarta.annotation.Resource;
 import jakarta.validation.ConstraintValidator;
@@ -37,19 +38,20 @@ public class DecryptLengthValidation implements ConstraintValidator<DecryptRuleB
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        // TODO: 1.这里写将加密内容还原后，判断原内容的长短
-        // TODO: 2.难点为 怎么获取到该类的时间戳来进行解密
+        // 1.这里写将加密内容还原后，判断原内容的长短
+        // 2.难点为 怎么获取到该类的时间戳来进行解密
         Object requestBody = ValidationContext.getRequestBody();
         Map<String,Object> fileNameMap = objectMapper.convertValue(requestBody,Map.class);
         String fileValue = fileNameMap.get(fileName).toString();
-        log.info("DecryptLengthValidation -> isValid -> 拿requestBody: {}", fileNameMap);
-        log.info("fileName -> {}", fileName);
-        log.info("fileName's value -> {}", fileValue);
-        boolean contains = fileValue.contains("3");
-        if (!contains) {
+        String plainText = null;
+        try {
+            plainText = AESUtils.decrypt128(value, AESUtils.getSecretKeySpec128(fileValue), AESUtils.getIvParameterSpec128(fileValue));
+        } catch (Exception e) {
+            context.buildConstraintViolationWithTemplate(e.getMessage()).addConstraintViolation();
             return false;
         }
-        if (value == null || value.length() < minLength || value.length() > maxLength) {
+
+        if (plainText == null || plainText.length() < minLength || plainText.length() > maxLength) {
             return false;
         }
         return true;
