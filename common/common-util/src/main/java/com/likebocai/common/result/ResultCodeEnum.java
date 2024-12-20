@@ -45,6 +45,29 @@ public enum ResultCodeEnum {
     COUPON_EXPIRE( 250, "优惠券已过期"),
     COUPON_LESS( 250, "优惠券库存不足"),
     COUPON_USER_LIMIT( 250, "超出领取数量"),
+
+    // 4xx
+    /**
+     * @author likebocai
+     * @date 2024/12/20 16:18
+     * @description: 429 账号被封禁5分钟,请稍后再试.
+     */
+    ACCOUNT_BAN(429,"账号被封禁5分钟,请稍后再试."),
+
+    /**
+     * @author likebocai
+     * @date 2024/12/20 16:45
+     * @description: 400 账户不存在/密码错误
+     */
+    LOGIN_ERROR(400,"账户不存在/密码错误"),
+
+    // 5xx
+    /**
+     * @author likebocai
+     * @date 2024/12/20 16:31
+     * @description: 后台出错,请联系管理员.
+     */
+    SYSTEM_ERROR(500,"后台出错,请联系管理员."),
     ;
 
     private Integer code;
