@@ -38,10 +38,17 @@ public class DecryptLengthValidation implements ConstraintValidator<DecryptRuleB
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        // 1.这里写将加密内容还原后，判断原内容的长短
-        // 2.难点为 怎么获取到该类的时间戳来进行解密
+        /*
+         * 用密码举例
+         * key 为盐值, iv 为偏移量此处两个值均需为16位或 128 byte，而AES有这种加密模式
+         * 加密规则：
+         * key: MD5(timeStamp).substring(0,16)
+         * iv: MD5(key).substring(0,16)
+         * 加密后的密码: AES(password,key,iv)
+         */
         Object requestBody = ValidationContext.getRequestBody();
-        Map<String,Object> fileNameMap = objectMapper.convertValue(requestBody,Map.class);
+        Map fileNameMap = objectMapper.convertValue(requestBody,Map.class);
+        // 获取到该类中其他作为盐值加密的数据来进行解密
         String fileValue = fileNameMap.get(fileName).toString();
         String plainText = null;
         try {
@@ -50,10 +57,7 @@ public class DecryptLengthValidation implements ConstraintValidator<DecryptRuleB
             context.buildConstraintViolationWithTemplate(e.getMessage()).addConstraintViolation();
             return false;
         }
-
-        if (plainText == null || plainText.length() < minLength || plainText.length() > maxLength) {
-            return false;
-        }
-        return true;
+        // 加密内容还原后，判断原内容的长短
+        return plainText.length() >= minLength && plainText.length() <= maxLength;
     }
 }
