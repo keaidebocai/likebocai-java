@@ -61,6 +61,22 @@ public class AESUtils {
         return Arrays.copyOf(hashBytes, 16);
     }
 
+    public static String md5Encrypt(String input) throws NoSuchAlgorithmException {
+        // 创建 MessageDigest 实例，并指定 MD5 算法
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        // 对输入字符串进行加密
+        byte[] hashBytes = md.digest(input.getBytes());
+
+        // 转换为十六进制表示
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hashBytes) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
     /**
      * @author: LikeBocai
      * @description: 根据加密关键信息获取AES的key值
