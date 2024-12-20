@@ -3,7 +3,9 @@ package com.likebocai.oauth.vo;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @program: likebocai-java
@@ -13,6 +15,8 @@ import lombok.Data;
  **/
 @Schema(name = "UserLoginVO", title = "用户登录返回体", description = "双token")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserLoginVO {
 
     @Schema(name = "accessToken", title = "token", description = "过期时间较短，储存用户信息权限")
