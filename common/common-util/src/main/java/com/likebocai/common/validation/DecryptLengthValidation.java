@@ -10,6 +10,7 @@ import jakarta.validation.ConstraintValidatorContext;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * @program: likebocai-java
@@ -54,10 +55,17 @@ public class DecryptLengthValidation implements ConstraintValidator<DecryptRuleB
         try {
             plainText = AESUtils.decrypt128(value, AESUtils.getSecretKeySpec128(fileValue), AESUtils.getIvParameterSpec128(fileValue));
         } catch (Exception e) {
-            context.buildConstraintViolationWithTemplate(e.getMessage()).addConstraintViolation();
+//            context.buildConstraintViolationWithTemplate(e.getMessage()).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate("解析密文失败请停止逆向").addConstraintViolation();
             return false;
         }
+        // 正则匹配 强密码(必须包含大小写字母和数字的组合，可以使用特殊字符，长度在8-10之间)
+        // "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$"
+        StringBuffer regexp = new StringBuffer();
+        regexp.append("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{").append(minLength).append(",").append(maxLength).append("}$");
+        boolean isMatches = Pattern.matches(regexp.toString(), plainText);
+
         // 加密内容还原后，判断原内容的长短
-        return plainText.length() >= minLength && plainText.length() <= maxLength;
+        return isMatches && plainText.length() >= minLength && plainText.length() <= maxLength;
     }
 }
