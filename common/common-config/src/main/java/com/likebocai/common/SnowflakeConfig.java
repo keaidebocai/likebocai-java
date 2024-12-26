@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author likebocai
  * @date 2024/12/26 15:38
- * @description: TODO
+ * @description: 雪花算法配置
  */
 @Component
 public class SnowflakeConfig {
