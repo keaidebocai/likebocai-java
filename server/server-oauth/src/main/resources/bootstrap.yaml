@@ -18,6 +18,9 @@ spring:
           - data-id: common-account.yaml
             group: ${spring.profiles.active-group}
             refresh: true
+          - data-id: snowflake-shanghai.yaml
+            group: ${spring.profiles.active-group}
+            refresh: true
         namespace: 6300372c-d4d9-45e4-9269-97c7897b4ea6
       discovery:
         server-addr: ${spring.cloud.nacos.config.server-addr}
