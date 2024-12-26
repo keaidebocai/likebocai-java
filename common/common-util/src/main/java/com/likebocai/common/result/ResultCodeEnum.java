@@ -21,7 +21,7 @@ public enum ResultCodeEnum {
     ARGUMENT_VALID_ERROR(210, "参数校验异常"),
     SIGN_ERROR(300, "签名错误"),
     SIGN_OVERDUE(301, "签名已过期"),
-    VALIDATECODE_ERROR(218 , "验证码错误"),
+    VALIDATECODE_ERROR(218 , "验证码错误/已过期"),
 
     LOGIN_AUTH(208, "未登陆"),
     PERMISSION(209, "没有权限"),
@@ -60,7 +60,36 @@ public enum ResultCodeEnum {
      * @description: 400 账户不存在/密码错误
      */
     LOGIN_ERROR(400,"账户不存在/密码错误"),
-
+    /**
+     * @author likebocai
+     * @date 2024/12/26 15:14
+     * @description: 401 没有权限
+     */
+    NOT_PERMISSION(401,"没有权限"),
+    /**
+     * @author likebocai
+     * @date 2024/12/26 15:15
+     * @description: 用户名已存在
+     */
+    USER_NAME_EXIST(402,"用户名已存在"),
+    /**
+     * @author likebocai
+     * @date 2024/12/26 15:17
+     * @description: 昵称已存在
+     */
+    NICK_NAME_EXIST(403,"昵称已存在"),
+    /**
+     * @author likebocai
+     * @date 2024/12/26 15:19
+     * @description: 404 资源未被找到
+     */
+    NOT_FOUND_404(404,"资源未被找到"),
+    /**
+     * @author likebocai
+     * @date 2024/12/26 15:17
+     * @description: 邮箱已被注册过
+     */
+    EMAIL_ALREADY(405,"邮箱已被注册"),
     // 5xx
     /**
      * @author likebocai
