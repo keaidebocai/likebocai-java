@@ -27,7 +27,7 @@ public class Knife4jConfig {
 
         return new OpenAPI()
                 .info(new Info()
-                        .title("菠菜的小窝-share-接口文档")
+                        .title("菠菜的小窝-oauth-接口文档")
                         .version("3.0.0")
                         .description("菠菜的小窝-oauth-接口文档")
                         .contact(new Contact().name("likebocai"))
