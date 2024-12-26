@@ -24,7 +24,7 @@ public class UserLoginDTO {
 
     @Schema(name = "password", title = "密码", description = "密文密码")
     @NotBlank(message = "密码不能为空")
-    @DecryptRuleByLength(minLength = 5, maxLength = 10, message = "密码的长度需在{minLength}-{maxLength}位", fileName = "timeStamp")
+    @DecryptRuleByLength(minLength = 5, maxLength = 30, message = "必须包含大小写字母和数字的组合，可以使用特殊字符，长度在{minLength}-{maxLength}之间", fileName = "timeStamp")
     private String password;
 
     @Schema(name = "timeStamp", title = "时间戳", description = "毫秒级")
