@@ -2,16 +2,14 @@ package com.likebocai.oauth.controller;
 
 import com.likebocai.common.result.Result;
 import com.likebocai.oauth.dto.UserLoginDTO;
+import com.likebocai.oauth.dto.UserRegisterDTO;
 import com.likebocai.oauth.service.LoginService;
 import com.likebocai.oauth.vo.UserLoginVO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @program: likebocai-java
@@ -33,4 +31,14 @@ public class LoginController {
         return loginService.login(userLoginDTO);
     }
 
+    /**
+     * @author likebocai
+     * @date 2024/12/26 16:40
+     * @description: 注册接口 权限问题扔给申请权限的审批或者交给日后的自己
+     */
+    @Operation(summary = "注册接口", description = "注册接口")
+    @PostMapping("/register")
+    public Result register(@RequestBody @Valid UserRegisterDTO userRegisterDTO) {
+        return loginService.register(userRegisterDTO);
+    }
 }

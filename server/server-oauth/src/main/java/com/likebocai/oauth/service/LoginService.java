@@ -2,6 +2,7 @@ package com.likebocai.oauth.service;
 
 import com.likebocai.common.result.Result;
 import com.likebocai.oauth.dto.UserLoginDTO;
+import com.likebocai.oauth.dto.UserRegisterDTO;
 import com.likebocai.oauth.vo.UserLoginVO;
 
 /**
@@ -13,4 +14,7 @@ import com.likebocai.oauth.vo.UserLoginVO;
 
 public interface LoginService {
     Result<UserLoginVO> login(UserLoginDTO userLoginDTO);
+
+    Result register(UserRegisterDTO userRegisterDTO);
+
 }

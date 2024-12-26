@@ -5,6 +5,13 @@
         <id column="user_name" property="userName"/>
         <result column="password" property="password"/>
     </resultMap>
+    <insert id="userRegister" parameterType="com.likebocai.oauth.dto.UserRegisterDTO">
+        INSERT INTO
+            oauth_user
+        (id,user_name,password,nick_name,user_email,user_sex)
+        VALUES
+        (#{id},#{userName},#{password},#{nickName},#{userEmail},#{userSex})
+    </insert>
 
     <select id="getOauthUserInfoByUserName" resultMap="userResultMap">
         SELECT
@@ -13,5 +20,15 @@
             oauth_user
         WHERE
             user_name = #{userName}
+            AND is_deleted = 0
+    </select>
+    <select id="getCountByFileName" resultType="java.lang.Integer">
+        SELECT
+            count(id)
+        FROM
+            oauth_user
+        WHERE
+            ${fileName} = #{text}
+            AND is_deleted = 0
     </select>
 </mapper>
