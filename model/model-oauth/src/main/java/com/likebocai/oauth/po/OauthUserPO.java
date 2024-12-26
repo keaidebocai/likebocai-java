@@ -25,7 +25,7 @@ public class OauthUserPO implements Serializable {
     */
     private String userName;
     /**
-    * 加密后的密码(Argon2复合加密，设置为128位)
+    * 加密后的密码(MD5加密即可)
     */
     private String password;
     /**
@@ -41,17 +41,13 @@ public class OauthUserPO implements Serializable {
     */
     private Integer userSex;
     /**
-    * 用户的角色信息
-    */
-    private Long roleId;
-    /**
     * 用户账户状态(0: 正常,1: 审核中,2: 封禁)
     */
     private Integer userStatus;
     /**
     * 逻辑删除(1: 删除,0:未删除)
     */
-    private Integer isDeleted;
+    private Integer deleted;
     /**
     * 创建时间
     */

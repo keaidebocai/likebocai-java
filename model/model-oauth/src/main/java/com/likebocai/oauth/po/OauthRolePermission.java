@@ -31,7 +31,7 @@ public class OauthRolePermission implements Serializable {
     /**
     * 逻辑删除(1: 删除,0:未删除)
     */
-    private Integer isDeleted;
+    private Integer deleted;
     /**
     * 创建时间
     */
