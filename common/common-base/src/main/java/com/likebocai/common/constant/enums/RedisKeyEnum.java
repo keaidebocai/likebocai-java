@@ -31,6 +31,13 @@ public enum RedisKeyEnum {
      * @description: 用户的刷新令牌
      */
     REFRESH_TOKEN("refresh"),
+
+    /**
+     * @author likebocai
+     * @date 2024/12/26 16:09
+     * @description: 邮箱验证码
+     */
+    EMAIL_CODE("emailCode"),
     ;
 
     /**
