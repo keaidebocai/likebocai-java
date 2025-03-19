@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * @program: likebocai-java
  * @description: redis key 的前缀
- * @author: LikeBocai
+ * @author: likebocai
  * @create: 2024/12/7 11:38
  **/
 @Getter

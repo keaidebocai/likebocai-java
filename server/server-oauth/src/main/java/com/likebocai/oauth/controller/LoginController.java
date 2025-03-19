@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -40,5 +41,18 @@ public class LoginController {
     @PostMapping("/register")
     public Result register(@RequestBody @Valid UserRegisterDTO userRegisterDTO) {
         return loginService.register(userRegisterDTO);
+    }
+
+    /**
+     * @description: 发送邮箱验证码
+     * @param: email
+     * @return: com.likebocai.common.result.Result<java.lang.Object>
+     * @author likebocai
+     * @date: 2025/3/7 17:26
+     */
+    @Operation(summary = "邮箱验证码", description = "发送邮箱验证码")
+    @GetMapping("/email")
+    public Result<Object> sendEmailCode(@Email(message = "邮箱格式错误") String email) {
+        return loginService.sendEmailCode(email);
     }
 }

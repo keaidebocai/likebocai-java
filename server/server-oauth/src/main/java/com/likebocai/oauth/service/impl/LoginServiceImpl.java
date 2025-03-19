@@ -1,7 +1,7 @@
 package com.likebocai.oauth.service.impl;
 
-import com.alibaba.druid.util.StringUtils;
 import com.likebocai.common.constant.enums.RedisKeyEnum;
+import com.likebocai.common.constant.enums.SystemConstant;
 import com.likebocai.common.result.Result;
 import com.likebocai.common.result.ResultCodeEnum;
 import com.likebocai.common.utils.AESUtils;
@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * @description: 登陆页面的相关接口实现类
  * @author: LikeBocai
  * @create: 2024/12/7 11:38
- **/
+ */
 @Service
 public class LoginServiceImpl implements LoginService {
 
@@ -59,7 +59,7 @@ public class LoginServiceImpl implements LoginService {
         OauthUserPO oauthUserPO = oauthUserMapper.getOauthUserInfoByUserName(userLoginDTO.getUserName());
 
         // 用户名是否存在
-        if (oauthUserPO == null || StringUtils.isEmpty(oauthUserPO.getUserName())) {
+        if (oauthUserPO == null) {
             redisTemplateString
                     .opsForValue()
                     .increment(RedisKeyEnum.LOGIN_CHECK_NUMBER.concat(userLoginDTO.getUserName()));
@@ -90,7 +90,7 @@ public class LoginServiceImpl implements LoginService {
             return Result.build(null,ResultCodeEnum.LOGIN_ERROR);
         }
         // else 返回 双token
-        // accout_token
+        // account_token
         String account = UUID.randomUUID().toString().replace("-","");
         // refresh_token
         String refresh = UUID.randomUUID().toString().replace("-","");
@@ -99,20 +99,20 @@ public class LoginServiceImpl implements LoginService {
          redisTemplateString
                  .opsForValue()
                  .set(RedisKeyEnum.ACCOUNT_TOKEN.concat(account),
-                         "accout_token",
+                         SystemConstant.ACCOUNT_TOKEN,
                          RedisKeyEnum.TIME_OUT_FIVE,
                          TimeUnit.MINUTES);
          // 15 day
         redisTemplateString
                 .opsForValue()
                 .set(RedisKeyEnum.ACCOUNT_TOKEN.concat(refresh),
-                        "refresh_token",
+                        SystemConstant.REFRESH_TOKEN,
                         RedisKeyEnum.TIME_OUT_FIFTEEN,TimeUnit.DAYS);
-        return Result.build(userLoginVO,200,"成功!");
+        return Result.build(userLoginVO,ResultCodeEnum.SUCCESS);
     }
 
     @Override
-    public Result register(UserRegisterDTO userRegisterDTO) {
+    public Result<Object> register(UserRegisterDTO userRegisterDTO) {
         // 1. 确保用户信息唯一
         // 1.1 用户名是否重复
         Integer userNameCount = oauthUserMapper.getCountByFileName("user_name", userRegisterDTO.getUserName());
@@ -126,11 +126,13 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // 1.4 redis 邮箱验证码是否正确或是否超时
-        Object emailCodeByRedis = redisTemplateString.opsForValue().get(RedisKeyEnum.EMAIL_CODE.concat(userRegisterDTO.getUserEmail()));
+        Object emailCodeByRedis = redisTemplateString
+                .opsForValue()
+                .get(RedisKeyEnum.EMAIL_CODE.concat(userRegisterDTO.getUserEmail()));
         if (emailCodeByRedis == null || !userRegisterDTO.getEmailCode().equals(emailCodeByRedis.toString())) {
             return Result.build(null,ResultCodeEnum.VALIDATECODE_ERROR);
         }
-        // 1.4 邮箱是否重复
+        // TODO: 邮箱是否重复放到发邮件接口 1.4 邮箱是否重复
         Integer emailCount = oauthUserMapper.getCountByFileName("user_email", userRegisterDTO.getUserEmail());
         if (emailCount > 0) {
             return Result.build(null,ResultCodeEnum.EMAIL_ALREADY);
@@ -159,5 +161,18 @@ public class LoginServiceImpl implements LoginService {
             return Result.build(null,ResultCodeEnum.SYSTEM_ERROR);
         }
         return Result.build(null,ResultCodeEnum.SUCCESS);
+    }
+
+    /**
+     * @description: 发送邮箱验证码实现方法
+     * @param: email
+     * @return: com.likebocai.common.result.Result<java.lang.Object>
+     * @author likebocai
+     * @date: 2025/3/7 17:30
+     */
+    @Override
+    public Result<Object> sendEmailCode(String email) {
+
+        return null;
     }
 }
